@@ -13,8 +13,9 @@ options.addEventListener("click", event => {
 });
 
 function getComputerChoice() {
+  const cpuOptions = ["Rock", "Paper", "Scissors"];
   const randomNumber = Math.floor(Math.random() * 3);
-  return options[randomNumber];
+  return cpuOptions[randomNumber];
 }
 
 function playRound(userChoice, cpuChoice) {
