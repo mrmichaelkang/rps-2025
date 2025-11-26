@@ -1,16 +1,20 @@
-const options = ["Rock", "Paper", "Scissors"];
+const options = document.querySelector("#options");
 let userScore = 0;
 let cpuScore = 0;
+let userChoice = "";
+
+options.addEventListener("click", event => {
+  let target = event.target;
+
+  if(target.classList.contains("btn")){
+    userChoice = target.id;
+    playGame();
+  }
+});
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
   return options[randomNumber];
-}
-
-function getHumanChoice() {
-  const userChoice = Number(prompt("Choose an option:\n1. Rock\n2. Paper\n3. Scissors"));
-  return options[userChoice - 1
-  ];
 }
 
 function playRound(userChoice, cpuChoice) {
@@ -40,17 +44,10 @@ function playRound(userChoice, cpuChoice) {
 
 function playGame() {
   let cpuChoice;
-  let userChoice;
 
-  for(let i = 0; i < 5; i++) {
-    cpuChoice = getComputerChoice();
-    userChoice = getHumanChoice();
-    playRound(userChoice, cpuChoice);
-    console.log(`User score: ${userScore}\nCPU Score: ${cpuScore}`);
-  }
+  cpuChoice = getComputerChoice();
+  playRound(userChoice, cpuChoice);
+  console.log(`User score: ${userScore}\nCPU Score: ${cpuScore}`);
 
   playRound(userChoice, cpuChoice);
 }
-
-
-playGame();
